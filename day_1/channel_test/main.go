@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"golang_learn/week_1/package_1"
+	"golang_learn/day_1/package_1"
 )
 
 func add(a, b int, c chan int) {
