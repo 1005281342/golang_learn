@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"golang_learn/day_5/slack"
+	"golang_learn/day_5/sort_case"
 )
 
 func main() {
@@ -15,4 +16,10 @@ func main() {
 		ch <- 1
 	}()
 	fmt.Println(<-ch)
+
+	b := [...]int{4, 8, 5, 2, 1, 9}
+	//sort_case.Bsort(b[:])
+	//sort_case.Ssort(b[:])
+	sort_case.Isort(b[:])
+	fmt.Println(b)
 }
