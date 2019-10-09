@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+/*
+在1.3的老版本中，直接对字符串进行比较时，是使用它们的地址进行大小比较的。
+*/
+
 func main() {
 	res := SelectSort([]int{1, 4, 23, 3, 6, 7})
 	log.Printf("选择排序结果是 %v", res)
