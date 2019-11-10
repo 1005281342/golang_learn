@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+/*
+将数组对半划分子数组，进行外部排序。
+当子数组不可划分时。会逐层弹出栈。
+*/
+
 func main() {
 	fmt.Println(MergeSort([]int{1, 5, 63, 2, 6, 723, 8436, 22, 6, 3, 2, 9}))
 }
@@ -17,6 +22,7 @@ func Merge(a, b []int) []int {
 	}
 	c := make([]int, 0, 0)
 	ia, ib := 0, 0
+	// 进行外排
 	for ia < la && ib < lb {
 		if a[ia] < b[ib] {
 			c = append(c, a[ia])
@@ -31,6 +37,7 @@ func Merge(a, b []int) []int {
 			ib++
 		}
 	}
+	// 将余下的数据追加过去
 	if ia < la {
 		c = append(c, a[ia:]...)
 	}

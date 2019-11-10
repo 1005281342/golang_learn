@@ -7,6 +7,8 @@ func main() {
 	fmt.Println(ShellSort([]int{1, 5, 63, 2, 6, 723, 8436, 22, 6, 3, 2, 9}))
 }
 
+// 一般用在并发场合
+
 // 步长收缩
 func ShellSort(arr []int) []int {
 	length := len(arr)
@@ -32,5 +34,6 @@ func ShellSortStep(nums []int, start, gap int) {
 			nums[j], nums[j-gap] = nums[j-gap], nums[j]
 			j -= gap
 		}
+		fmt.Println(gap, nums)
 	}
 }
