@@ -1,4 +1,7 @@
+package main
+
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -104,30 +107,43 @@ type Skiplist struct {
 }
 
 func Constructor() Skiplist {
-	this := Skiplist{SkipList{}}
-	this.l.Init(
+	sl := Skiplist{SkipList{}}
+	sl.l.Init(
 		func(a, b int) bool { return a == b },
 		func(a, b int) bool { return a < b })
-	return this
+	return sl
 }
 
-func (this *Skiplist) Search(target int) bool {
-	return this.l.Get(target) != nil
+func (sl *Skiplist) Search(target int) bool {
+	return sl.l.Get(target) != nil
 }
 
-func (this *Skiplist) Add(num int) {
-	if n, ok := this.l.Add(num, 1); !ok {
+func (sl *Skiplist) Add(num int) {
+	if n, ok := sl.l.Add(num, 1); !ok {
 		n.Value++
 	}
 }
 
-func (this *Skiplist) Erase(num int) bool {
-	if n := this.l.Get(num); nil != n {
+func (sl *Skiplist) Erase(num int) bool {
+	if n := sl.l.Get(num); nil != n {
 		n.Value--
 		if 0 == n.Value {
-			this.l.Remove(num)
+			sl.l.Remove(num)
 		}
 		return true
 	}
 	return false
+}
+
+func main() {
+	ct := Constructor()
+	ct.Add(100)
+	b := 0
+	a := ct.Search(b)
+	fmt.Println(b, a)
+	b = 100
+	a = ct.Search(b)
+	fmt.Println(b, a)
+	a = ct.Erase(b)
+	fmt.Println(b, a)
 }
